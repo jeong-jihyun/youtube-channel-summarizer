@@ -61,6 +61,17 @@ youtube-channel-summarizer/
 - 영상 337개를 5개씩 처리하면 약 68일이 걸린다. 최신 영상부터 거꾸로 진행한다.
 - 5개 중 일부가 실패하면 성공한 것만 반영하고, 실패는 시트에 `실패`와 이유를 적는다. 다음 날 다시 시도한다.
 
+## 3-1. 모든 프로젝트의 표준 구조 (필수, 매일 동일 적용)
+
+사용자가 휴대폰과 PC에서 직접 시험·배포할 수 있도록 **모든 새 프로젝트는 아래를 갖춘다**. 자세한 내용은 `docs/GUIDE.md`.
+
+1. 소스에 `api(params) -> {"ok": ...}` 함수를 둔다.
+2. 프로젝트 폴더에 `project.json`(name, title, entry, script, requirements, inputs, uses, video)을 쓴다. `uses` 는 구체적인 활용 방법 3~4개.
+3. `python3 scripts/scaffold.py <프로젝트 폴더>` 로 server.py, test_project.py, Makefile, Dockerfile, requirements.txt, README 표준 구역을 만든다.
+4. `python3 scripts/check_all.py` 가 전부 통과해야 반영한다. 실패한 프로젝트는 반영하지 않는다.
+5. `python3 scripts/build_lab.py <블로그 저장소>/lab` 으로 휴대폰 실험실(https://jeong-jihyun.github.io/lab/)을 갱신하고 블로그 저장소에 push 한다.
+6. 카카오 알림에 실험실 주소를 넣는다.
+
 ## 4. 구글 시트로 반영 소스 관리
 
 시트 1개, 탭 4개. 모두 단순한 표로 둔다.

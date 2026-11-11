@@ -23,3 +23,28 @@ python3 index.py
 ```
 
 상태: **동작 확인** — 12줄이 모두 파싱되고 시작 시간(8:31=511초) 검사가 통과했다.
+
+<!-- standard:begin -->
+## 이렇게 활용할 수 있어요
+- 챕터가 많은 긴 영상의 설명란을 붙여 넣으면 '시간 링크가 걸린 목차 표'를 만들어 블로그·노션에 그대로 붙여 넣는다.
+- 다른 영상 ID를 넣어 내 영상 목차 만들기에도 쓴다.
+- 서비스별 설명 시간 간격을 보고 어느 부분을 길게 다루는지 파악한다(샘플은 일부만 넣어 실제 길이와 다름).
+- 챕터 줄 형식 검사기로 쓴다(형식이 틀린 줄은 건너뜀).
+
+## 모바일(휴대폰)에서 바로 쓰기
+https://jeong-jihyun.github.io/lab/ 를 열고 '서비스 챕터 색인' 카드를 눌러 값을 바꾼 뒤 **실행**을 누른다. 서버가 필요 없고, 처음 실행은 파이썬을 내려받느라 10~20초 걸린다.
+
+## 내 컴퓨터에서 시험·실행
+```
+make test      # 자동 시험 (python3 -m unittest -v test_project)
+make run       # 웹 화면 실행 -> http://localhost:8000 (PORT=9000 make run 으로 포트 변경)
+```
+- 파이썬 코드에서 직접 부르기: `from index import api; api({...})`
+- 다른 프로그램에서 부르기: `GET http://localhost:8000/api/run?키=값` (JSON 응답), 상태 확인은 `/health`
+
+## 배포
+```
+make docker    # 컨테이너로 빌드·실행 (http://localhost:8000)
+```
+Dockerfile 이 있으므로 Render·Fly.io·Cloud Run 등 컨테이너를 받는 곳에 그대로 올릴 수 있다. 자세한 순서는 저장소의 docs/GUIDE.md 참고.
+<!-- standard:end -->

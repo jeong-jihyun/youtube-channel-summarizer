@@ -1,0 +1,40 @@
+{
+  "name": "runway-and-model-router",
+  "title": "런웨이 계산기와 모델 라우터",
+  "entry": "router:api",
+  "script": "router.py",
+  "requirements": [],
+  "video": {
+    "id": "VD9OCNkJ8Dw",
+    "title": "2023년부터 직접 다 해본 AI 1인 기업 자동화 (EP.1)"
+  },
+  "inputs": [
+    {
+      "key": "budget",
+      "label": "예산(원)",
+      "type": "number",
+      "default": "1000000"
+    },
+    {
+      "key": "tokens",
+      "label": "작업당 하루 토큰 수",
+      "type": "number",
+      "default": "50000"
+    },
+    {
+      "key": "power",
+      "label": "하루 전기·기타(원)",
+      "type": "number",
+      "default": "1500"
+    }
+  ],
+  "uses": [
+    "내 1인 기업의 하루 운영비와 런웨이(몇 일 버티는지)를 숫자를 바꿔 가며 계산한다.",
+    "작업 종류별로 큰 모델·작은 모델·로컬 모델 중 어디로 보낼지 규칙표를 만들고 절감률을 본다.",
+    "모델 가격(MODELS)과 작업 목록(TASKS)을 내 실제 값으로 고쳐 비용 시뮬레이터로 쓴다(지금 가격은 가정값).",
+    "프로젝트별 '이 안에 성과 없으면 중단' 기준일을 정하는 근거 자료로 쓴다."
+  ],
+  "files": [
+    "router.py"
+  ]
+}

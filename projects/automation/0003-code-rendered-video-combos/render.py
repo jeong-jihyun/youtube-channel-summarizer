@@ -50,6 +50,20 @@ def render_gif(path, hat, frames=24):
     imgs[0].save(path, save_all=True, append_images=imgs[1:], duration=80, loop=0)
     return imgs
 
+
+def api(params=None):
+    """params: {"date": "2026-11-12"} -> 그날의 조합과 GIF(base64)를 돌려준다."""
+    import base64, io
+    day = dt.date.fromisoformat((params or {}).get("date", "2026-11-12"))
+    hat, char, shoes = daily_combo(day)
+    pts, cols = scene(hat)
+    imgs = [render_frame(pts, cols, 2 * math.pi * k / 12) for k in range(12)]
+    buf = io.BytesIO()
+    imgs[0].save(buf, format="GIF", save_all=True, append_images=imgs[1:], duration=80, loop=0)
+    diff = int(np.abs(np.array(imgs[0]).astype(int) - np.array(imgs[3]).astype(int)).sum())
+    return {"ok": diff > 1000, "date": day.isoformat(), "combo": {"hat": hat, "character": char, "shoes": shoes},
+            "frames": len(imgs), "frame_diff": diff, "gif_base64": base64.b64encode(buf.getvalue()).decode()}
+
 if __name__ == "__main__":
     today = dt.date(2026, 11, 12)
     hat, char, shoes = daily_combo(today)

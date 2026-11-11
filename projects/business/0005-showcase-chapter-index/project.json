@@ -1,0 +1,35 @@
+{
+  "name": "showcase-chapter-index",
+  "title": "서비스 챕터 색인",
+  "entry": "index:api",
+  "script": "index.py",
+  "requirements": [],
+  "video": {
+    "id": "aE7oIEgoNsw",
+    "title": "AI 1인 기업가가 된 129명"
+  },
+  "inputs": [
+    {
+      "key": "chapters",
+      "label": "챕터 목록(한 줄에 '0:00 제목: 한 줄')",
+      "type": "textarea",
+      "default": "0:00 인트로: 시작\n3:17 아우라 주얼리: 반지 가상 착용\n6:06 리뷰하운드: 리뷰에서 오늘 고칠 3가지"
+    },
+    {
+      "key": "video",
+      "label": "영상 ID",
+      "type": "text",
+      "default": "aE7oIEgoNsw"
+    }
+  ],
+  "uses": [
+    "챕터가 많은 긴 영상의 설명란을 붙여 넣으면 '시간 링크가 걸린 목차 표'를 만들어 블로그·노션에 그대로 붙여 넣는다.",
+    "다른 영상 ID를 넣어 내 영상 목차 만들기에도 쓴다.",
+    "서비스별 설명 시간 간격을 보고 어느 부분을 길게 다루는지 파악한다(샘플은 일부만 넣어 실제 길이와 다름).",
+    "챕터 줄 형식 검사기로 쓴다(형식이 틀린 줄은 건너뜀)."
+  ],
+  "files": [
+    "chapters_sample.txt",
+    "index.py"
+  ]
+}

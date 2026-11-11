@@ -24,6 +24,18 @@ def runway_days(budget_krw, daily_token_cost, daily_power_krw=1500, daily_rent_k
     burn = daily_token_cost + daily_power_krw + daily_rent_krw
     return burn, int(budget_krw // burn)
 
+
+def api(params=None):
+    """params: {"budget": "1000000", "tokens": "50000", "power": "1500"}"""
+    p = params or {}
+    budget, tokens, power = int(p.get("budget", 1_000_000)), int(p.get("tokens", 50_000)), int(p.get("power", 1500))
+    routes = {t: route(t) for t in TASKS}
+    big, smart = daily_cost(tokens, True), daily_cost(tokens)
+    burn, days = runway_days(budget, smart, power)
+    return {"ok": smart <= big, "routes": routes, "daily_cost_all_large": big, "daily_cost_routed": smart,
+            "saving_percent": round(100 * (big - smart) / big) if big else 0, "daily_burn": burn, "runway_days": days,
+            "note": "가격은 가정값(모의)"}
+
 if __name__ == "__main__":
     for t in TASKS:
         print(f"{t:18s} -> {route(t)}")

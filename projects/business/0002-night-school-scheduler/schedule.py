@@ -40,6 +40,18 @@ def weekly_table(items):
         rows.append(f"| {m} | {pub} | {mem} |")
     return "\n".join(rows)
 
+
+def api(params=None):
+    """params: {"start": "2026-11-11", "end": "2026-12-31", "hour": "20"}"""
+    p = params or {}
+    start = dt.date.fromisoformat(p.get("start", START.isoformat()))
+    end = dt.date.fromisoformat(p.get("end", END.isoformat()))
+    items = list(sessions(start, end))
+    ics = to_ics(items)
+    pub = sum(1 for _, t, _ in items if t.startswith("공개"))
+    return {"ok": len(items) > 0, "total": len(items), "public": pub, "members": len(items) - pub,
+            "weekly_markdown": weekly_table(items), "ics_head": ics.splitlines()[:8], "ics_lines": len(ics.splitlines()), "ics": ics}
+
 if __name__ == "__main__":
     items = list(sessions())
     open("night_school.ics", "w", encoding="utf-8", newline="").write(to_ics(items))

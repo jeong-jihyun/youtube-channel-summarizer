@@ -1,0 +1,34 @@
+{
+  "name": "night-school-scheduler",
+  "title": "AI 야학당 일정표 생성기",
+  "entry": "schedule:api",
+  "script": "schedule.py",
+  "requirements": [],
+  "video": {
+    "id": "0Hif6Y40uC8",
+    "title": "지금은 AI 문맹에서 벗어나야 합니다 (AI 야학당)"
+  },
+  "inputs": [
+    {
+      "key": "start",
+      "label": "시작일",
+      "type": "date",
+      "default": "2026-11-11"
+    },
+    {
+      "key": "end",
+      "label": "끝나는 날",
+      "type": "date",
+      "default": "2026-12-31"
+    }
+  ],
+  "uses": [
+    "야학당 방송 일정을 .ics 파일로 받아 휴대폰 달력(구글·삼성 달력)에 한 번에 넣고 알림을 받는다.",
+    "날짜 범위만 바꿔 다른 스터디·라이브 일정(평일 저녁 공개, 주말 멤버십 같은 규칙)도 만든다.",
+    "주별 횟수 표로 한 달에 몇 번 참석해야 하는지 계획을 세운다.",
+    "규칙(요일·시간)을 고쳐 내 팀 정기 모임 일정표 생성기로 재사용한다."
+  ],
+  "files": [
+    "schedule.py"
+  ]
+}

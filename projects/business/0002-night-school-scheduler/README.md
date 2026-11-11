@@ -24,3 +24,28 @@ python3 schedule.py
 ```
 
 상태: **동작 확인** — 첫 일정이 수요일(11-11)인지 검사해 통과했고, .ics 파일이 생성됐다. 달력 앱으로 직접 불러오는 것은 해 보지 못했다.
+
+<!-- standard:begin -->
+## 이렇게 활용할 수 있어요
+- 야학당 방송 일정을 .ics 파일로 받아 휴대폰 달력(구글·삼성 달력)에 한 번에 넣고 알림을 받는다.
+- 날짜 범위만 바꿔 다른 스터디·라이브 일정(평일 저녁 공개, 주말 멤버십 같은 규칙)도 만든다.
+- 주별 횟수 표로 한 달에 몇 번 참석해야 하는지 계획을 세운다.
+- 규칙(요일·시간)을 고쳐 내 팀 정기 모임 일정표 생성기로 재사용한다.
+
+## 모바일(휴대폰)에서 바로 쓰기
+https://jeong-jihyun.github.io/lab/ 를 열고 'AI 야학당 일정표 생성기' 카드를 눌러 값을 바꾼 뒤 **실행**을 누른다. 서버가 필요 없고, 처음 실행은 파이썬을 내려받느라 10~20초 걸린다.
+
+## 내 컴퓨터에서 시험·실행
+```
+make test      # 자동 시험 (python3 -m unittest -v test_project)
+make run       # 웹 화면 실행 -> http://localhost:8000 (PORT=9000 make run 으로 포트 변경)
+```
+- 파이썬 코드에서 직접 부르기: `from schedule import api; api({...})`
+- 다른 프로그램에서 부르기: `GET http://localhost:8000/api/run?키=값` (JSON 응답), 상태 확인은 `/health`
+
+## 배포
+```
+make docker    # 컨테이너로 빌드·실행 (http://localhost:8000)
+```
+Dockerfile 이 있으므로 Render·Fly.io·Cloud Run 등 컨테이너를 받는 곳에 그대로 올릴 수 있다. 자세한 순서는 저장소의 docs/GUIDE.md 참고.
+<!-- standard:end -->

@@ -69,6 +69,14 @@ def run(text="컴퓨터 유즈 연습 글입니다"):
         steps.append(act)
     return phone, steps, tree_tokens
 
+
+def api(params=None):
+    """웹/다른 파이썬 코드에서 부르는 진입점. params: {"text": "올릴 글"}"""
+    text = (params or {}).get("text") or "컴퓨터 유즈 연습 글입니다"
+    phone, steps, tt = run(text)
+    return {"ok": phone.posts == [text], "posts": phone.posts, "steps": steps,
+            "tree_tokens_estimate": tt, "screenshot_tokens_assumed": SCREENSHOT_TOKENS * (len(steps) + 1)}
+
 if __name__ == "__main__":
     phone, steps, tt = run()
     for i, s in enumerate(steps, 1):

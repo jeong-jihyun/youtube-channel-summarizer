@@ -29,6 +29,18 @@ def to_markdown(items):
         rows.append(f"| {t} | {c['name']} | {c['tagline']} | {mins} | [이동]({link(c['sec'])}) |")
     return "\n".join(rows)
 
+
+def api(params=None):
+    """params: {"chapters": "0:00 인트로: ...\n3:17 서비스: 한 줄", "video": "영상ID"}  (없으면 샘플 사용)"""
+    import os
+    global VIDEO
+    p = params or {}
+    text = p.get("chapters") or open(os.path.join(os.path.dirname(__file__), "chapters_sample.txt"), encoding="utf-8").read()
+    if p.get("video"):
+        VIDEO = "https://www.youtube.com/watch?v=" + p["video"]
+    items = parse(text)
+    return {"ok": len(items) > 0, "count": len(items), "markdown": to_markdown(items), "first": items[0] if items else None}
+
 if __name__ == "__main__":
     items = parse(open("chapters_sample.txt", encoding="utf-8").read())
     print(to_markdown(items))
