@@ -37,7 +37,7 @@ async function run(){const q=new URLSearchParams();document.querySelectorAll('[d
  try{const r=await fetch('/api/run?'+q);const j=await r.json();document.getElementById('s').textContent=j.ok?'성공':'실패';
  if(j.gif_base64){document.getElementById('img').innerHTML='<img src="data:image/gif;base64,'+j.gif_base64+'">';j.gif_base64='(그림 데이터 생략)';}
  if(j.ics){j.ics='('+j.ics_lines+'줄)';}
- document.getElementById('out').textContent=JSON.stringify(j,null,2);}catch(e){document.getElementById('s').textContent='오류: '+e}}
+ document.getElementById('out').textContent=j.text||JSON.stringify(j,null,2);}catch(e){document.getElementById('s').textContent='오류: '+e}}
 </script>"""
 
 
@@ -126,6 +126,10 @@ class ProjectTest(unittest.TestCase):
             self.assertIn("<button", urllib.request.urlopen(base + "/").read().decode("utf-8"))
         finally:
             httpd.shutdown()
+
+
+if os.path.exists(os.path.join(HERE, "test_extra.py")):  # 프로젝트별 추가 시험이 있으면 함께 실행
+    from test_extra import *  # noqa: F401,F403
 
 
 if __name__ == "__main__":

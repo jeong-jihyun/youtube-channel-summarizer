@@ -92,7 +92,8 @@ json.dumps(r, ensure_ascii=False)`);
       const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([j.ics], {type:'text/calendar'})); a.download = 'night_school.ics'; a.click(); }; acts.appendChild(b); j.ics = '(' + j.ics_lines + '줄, 위 버튼으로 받기)'; }
     const md = j.markdown || j.weekly_markdown;
     if(md){ const b = document.createElement('button'); b.className = 'g'; b.textContent = '표 복사'; b.onclick = async () => { try{ await navigator.clipboard.writeText(md); b.textContent = '복사됨'; }catch(e){ b.textContent = '복사 실패'; } }; acts.appendChild(b); }
-    out.textContent = JSON.stringify(j, null, 2);
+    if(j.text){ const b = document.createElement('button'); b.className = 'g'; b.textContent = '결과 복사'; b.onclick = async () => { try{ await navigator.clipboard.writeText(j.master_prompt || j.prompt || j.text); b.textContent = '복사됨'; }catch(e){ b.textContent = '복사 실패'; } }; acts.appendChild(b); out.textContent = j.text || j.prompt; }
+    else out.textContent = JSON.stringify(j, null, 2);
   }catch(e){ setStatus('오류: ' + e.message, 'bad'); }
 }
 

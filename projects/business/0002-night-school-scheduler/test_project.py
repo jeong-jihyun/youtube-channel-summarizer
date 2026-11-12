@@ -38,5 +38,9 @@ class ProjectTest(unittest.TestCase):
             httpd.shutdown()
 
 
+if os.path.exists(os.path.join(HERE, "test_extra.py")):  # 프로젝트별 추가 시험이 있으면 함께 실행
+    from test_extra import *  # noqa: F401,F403
+
+
 if __name__ == "__main__":
     unittest.main()

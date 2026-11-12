@@ -1,0 +1,1 @@
+bpy  # 블렌더 앱 없이 파이썬에서 blender_scene.py 를 실행하려면 (선택)

@@ -27,7 +27,7 @@ async function run(){const q=new URLSearchParams();document.querySelectorAll('[d
  try{const r=await fetch('/api/run?'+q);const j=await r.json();document.getElementById('s').textContent=j.ok?'성공':'실패';
  if(j.gif_base64){document.getElementById('img').innerHTML='<img src="data:image/gif;base64,'+j.gif_base64+'">';j.gif_base64='(그림 데이터 생략)';}
  if(j.ics){j.ics='('+j.ics_lines+'줄)';}
- document.getElementById('out').textContent=JSON.stringify(j,null,2);}catch(e){document.getElementById('s').textContent='오류: '+e}}
+ document.getElementById('out').textContent=j.text||JSON.stringify(j,null,2);}catch(e){document.getElementById('s').textContent='오류: '+e}}
 </script>"""
 
 
