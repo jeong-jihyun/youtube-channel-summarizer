@@ -1,0 +1,142 @@
+{
+  "name": "stitch-site-launch-kit",
+  "title": "AI 1인 사업 사이트 출시 키트(Design.md·페이지 지시문·결제 조건 비교·Antigravity 지시문)",
+  "entry": "site_kit:api",
+  "script": "site_kit.py",
+  "requirements": [],
+  "video": {
+    "id": "l_BNmIsuNVU",
+    "title": "Start an AI Solo Business for 0 Won | EP.1 (구글 Stitch 2.0 + Antigravity)"
+  },
+  "inputs": [
+    {
+      "key": "brand",
+      "label": "사이트·브랜드 이름",
+      "type": "text",
+      "default": "글로벌 AI 교육"
+    },
+    {
+      "key": "product",
+      "label": "파는 것",
+      "type": "text",
+      "default": "AI 1인 사업 전자책 19,900원"
+    },
+    {
+      "key": "audience",
+      "label": "대상 고객",
+      "type": "text",
+      "default": "AI가 처음인 직장인"
+    },
+    {
+      "key": "tone",
+      "label": "분위기",
+      "type": "text",
+      "default": "친절하고 신뢰감 있는"
+    },
+    {
+      "key": "primary",
+      "label": "주색(#RRGGBB)",
+      "type": "text",
+      "default": "#2563eb"
+    },
+    {
+      "key": "bg",
+      "label": "배경색(#RRGGBB)",
+      "type": "text",
+      "default": "#ffffff"
+    },
+    {
+      "key": "text",
+      "label": "글자색(#RRGGBB)",
+      "type": "text",
+      "default": "#111827"
+    },
+    {
+      "key": "font",
+      "label": "글꼴",
+      "type": "text",
+      "default": "Pretendard"
+    },
+    {
+      "key": "button",
+      "label": "버튼 모양",
+      "type": "text",
+      "default": "둥근 모서리(12px)"
+    },
+    {
+      "key": "pages",
+      "label": "페이지(쉼표, 비우면 영상 구성)",
+      "type": "text",
+      "default": "메인,전자책 상세,전자책 라이브러리,구매 완료·다운로드"
+    },
+    {
+      "key": "price",
+      "label": "전자책 가격(원)",
+      "type": "number",
+      "default": "19900"
+    },
+    {
+      "key": "sales",
+      "label": "월 판매 건수(가정)",
+      "type": "number",
+      "default": "30"
+    },
+    {
+      "key": "sell_global",
+      "label": "해외 고객에게도 판다(Y/N)",
+      "type": "text",
+      "default": "Y"
+    },
+    {
+      "key": "paypal_pct",
+      "label": "PayPal 수수료 %(가정)",
+      "type": "number",
+      "default": "4.0"
+    },
+    {
+      "key": "paypal_fixed",
+      "label": "PayPal 건당 고정비(원, 가정)",
+      "type": "number",
+      "default": "500"
+    },
+    {
+      "key": "stripe_pct",
+      "label": "Stripe 수수료 %(가정)",
+      "type": "number",
+      "default": "3.5"
+    },
+    {
+      "key": "stripe_fixed",
+      "label": "Stripe 건당 고정비(원, 가정)",
+      "type": "number",
+      "default": "300"
+    },
+    {
+      "key": "atlas_setup",
+      "label": "미국 법인(Stripe Atlas) 초기 비용(원, 가정)",
+      "type": "number",
+      "default": "700000"
+    },
+    {
+      "key": "toss_pct",
+      "label": "토스페이먼츠 수수료 %(가정)",
+      "type": "number",
+      "default": "3.0"
+    },
+    {
+      "key": "change",
+      "label": "Design.md를 바꾸고 싶은 점",
+      "type": "text",
+      "default": "배경은 흰색, 눈에 잘 띄게"
+    }
+  ],
+  "uses": [
+    "브랜드·색·글꼴·버튼 모양을 넣으면 Stitch에 올릴 Design.md를 만들고, 글자/배경·버튼 글자/주색의 대비비(WCAG 4.5:1)를 계산해 읽기 어려운 색을 미리 잡는다.",
+    "메인·상세·라이브러리·구매 완료 페이지별 프롬프트를 같은 디자인 규칙으로 만들어, 페이지마다 모양이 달라지는 것을 막는다.",
+    "해외 고객 여부와 수수료·미국 법인 초기비용을 넣으면 PayPal·Stripe·토스를 영상의 조건(Stripe는 한국 공식 불가, 토스는 한국 결제)으로 걸러 월 실수령으로 비교한다.",
+    "Stitch→MCP→Antigravity 연결 순서와 React 개발·고객 시점 시뮬레이션·오류 붙여 넣기 지시문을 체크리스트로 따라 하며 막힌 곳을 확인한다."
+  ],
+  "files": [
+    "site_kit.py"
+  ]
+}

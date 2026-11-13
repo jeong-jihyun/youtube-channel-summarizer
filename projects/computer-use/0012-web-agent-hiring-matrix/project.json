@@ -1,0 +1,136 @@
+{
+  "name": "web-agent-hiring-matrix",
+  "title": "웹 AI 에이전트 고용 비교표(6명 순위·인스타 CODE 댓글 지시문·공유 파일 규칙·손익분기)",
+  "entry": "hiring_matrix:api",
+  "script": "hiring_matrix.py",
+  "requirements": [],
+  "video": {
+    "id": "p7KaCOuJP2M",
+    "title": "웹 잘하는 AI 에이전트, 누구를 고용할까? 뮤즈부터 컴퓨터 유즈까지 | AI 야학당"
+  },
+  "inputs": [
+    {
+      "key": "need_app",
+      "label": "데스크톱 앱을 열어야 하나(Y/N)",
+      "type": "text",
+      "default": "N"
+    },
+    {
+      "key": "phone_only",
+      "label": "컴퓨터 없이 스마트폰만 있다(Y/N)",
+      "type": "text",
+      "default": "N"
+    },
+    {
+      "key": "login_sensitive",
+      "label": "인스타·유튜브 등 접속 지역에 민감한 계정(Y/N)",
+      "type": "text",
+      "default": "Y"
+    },
+    {
+      "key": "multi_model",
+      "label": "여러 AI 모델을 같이/바꿔 쓰고 싶다(Y/N)",
+      "type": "text",
+      "default": "Y"
+    },
+    {
+      "key": "is_dev",
+      "label": "개발 도구(Claude Code·Codex·안티그래비티)를 쓴다(Y/N)",
+      "type": "text",
+      "default": "N"
+    },
+    {
+      "key": "pc_spec",
+      "label": "PC 사양(낮음/보통/높음)",
+      "type": "text",
+      "default": "보통"
+    },
+    {
+      "key": "budget",
+      "label": "예산(무료/상관없음)",
+      "type": "text",
+      "default": "무료"
+    },
+    {
+      "key": "speed_first",
+      "label": "속도가 중요하다(Y/N)",
+      "type": "text",
+      "default": "N"
+    },
+    {
+      "key": "account",
+      "label": "인스타 계정",
+      "type": "text",
+      "default": "@my_account"
+    },
+    {
+      "key": "post_url",
+      "label": "대상 게시물 주소",
+      "type": "text",
+      "default": "https://www.instagram.com/p/EXAMPLE/"
+    },
+    {
+      "key": "keyword",
+      "label": "트리거 댓글 단어",
+      "type": "text",
+      "default": "CODE"
+    },
+    {
+      "key": "reply",
+      "label": "댓글 답글 문구",
+      "type": "text",
+      "default": "요청 감사합니다! 메시지로 보내 드릴게요."
+    },
+    {
+      "key": "dm",
+      "label": "DM으로 보낼 내용(프롬프트·링크)",
+      "type": "textarea",
+      "default": "프롬프트 파일 링크: (여기에)"
+    },
+    {
+      "key": "team",
+      "label": "함께 쓸 에이전트(쉼표)",
+      "type": "text",
+      "default": "Claude,ChatGPT,안티그래비티"
+    },
+    {
+      "key": "shared_path",
+      "label": "공유 텍스트 파일 위치",
+      "type": "text",
+      "default": "바탕화면/공유대화.txt"
+    },
+    {
+      "key": "routines",
+      "label": "하루 루틴(한 줄: HH:MM|할 일)",
+      "type": "textarea",
+      "default": "10:00|유튜브에서 운동 영상 찾아서 보내기\n12:00|명상 음악 추천 보내기\n13:00|회사 근처 점심 식당 알려 주기\n18:00|내일 밥 재료 주문 목록 만들기"
+    },
+    {
+      "key": "machine_won",
+      "label": "전용 컴퓨터 가격(원, 영상: 약 1천만 원)",
+      "type": "number",
+      "default": "10000000"
+    },
+    {
+      "key": "monthly_cost_won",
+      "label": "월 운영비(원, 가정)",
+      "type": "number",
+      "default": "300000"
+    },
+    {
+      "key": "saved_won",
+      "label": "월 절감 인건비(원, 가정)",
+      "type": "number",
+      "default": "2500000"
+    }
+  ],
+  "uses": [
+    "내 상황(앱 제어·폰 전용·로그인 민감·여러 모델·PC 사양·예산)을 넣으면 뮤즈·피클·크롬 확장·어사이드·에고라이트·컴퓨터 유즈를 이유와 함께 순위로 보고, 불가능한 후보를 미리 걸러낸다.",
+    "인스타그램 'CODE' 댓글 → 답글+DM 실습 지시문을 내 계정·게시물·문구로 만들어 에이전트에 붙여 넣고, 처음 5명만 처리하는 안전 규칙까지 포함한다.",
+    "Claude·ChatGPT 같은 에이전트를 여럿 쓸 때 바탕화면 텍스트 파일 하나로 서로의 의견을 읽고 이어 쓰게 하는 규칙을 한 번에 만든다.",
+    "하루 루틴을 시각순 표로 만들고 같은 시각 겹침을 잡으며, 전용 컴퓨터를 사면 몇 개월 만에 회수되는지 내 숫자로 계산한다."
+  ],
+  "files": [
+    "hiring_matrix.py"
+  ]
+}
