@@ -1,0 +1,130 @@
+{
+  "name": "shortform-agency-quote-planner",
+  "title": "숏폼 대행 견적·순수익 점검 + 고객용 기획서 뼈대",
+  "entry": "agency:api",
+  "script": "agency.py",
+  "requirements": [],
+  "video": {
+    "id": "t3-xEAagHDs",
+    "title": "\"72세도 돈 벌고 일본 여행 가셨어요\" 영상 전달만 하며 월 4천 버는 역대급 자택 부업"
+  },
+  "inputs": [
+    {
+      "key": "videos_per_month",
+      "label": "고객 1곳 월 제작 건수",
+      "type": "number",
+      "default": "8"
+    },
+    {
+      "key": "months",
+      "label": "패키지 개월 수",
+      "type": "number",
+      "default": "3"
+    },
+    {
+      "key": "package_total",
+      "label": "패키지 총액(원, 영상 속 사례 660만원)",
+      "type": "number",
+      "default": "6600000"
+    },
+    {
+      "key": "outsource_per_video",
+      "label": "편집 외주비 건당(원, 가정)",
+      "type": "number",
+      "default": "30000"
+    },
+    {
+      "key": "my_minutes_per_video",
+      "label": "내가 쓰는 시간 건당(분, 기획·검수·전달, 가정)",
+      "type": "number",
+      "default": "20"
+    },
+    {
+      "key": "clients",
+      "label": "고객 수(영상: 13곳)",
+      "type": "number",
+      "default": "13"
+    },
+    {
+      "key": "tool_cost_month",
+      "label": "월 툴 비용 합계(원, 가정)",
+      "type": "number",
+      "default": "100000"
+    },
+    {
+      "key": "claim_net_month",
+      "label": "점검할 월 순수익 주장(원, 영상: 4천만)",
+      "type": "number",
+      "default": "40000000"
+    },
+    {
+      "key": "claim_margin_pct",
+      "label": "점검할 순수익률 주장(%, 영상: 60~70)",
+      "type": "number",
+      "default": "65"
+    },
+    {
+      "key": "industry",
+      "label": "고객 업종",
+      "type": "text",
+      "default": "치과"
+    },
+    {
+      "key": "topic",
+      "label": "릴스 주제",
+      "type": "text",
+      "default": "스케일링 주기"
+    },
+    {
+      "key": "trend",
+      "label": "참고할 트렌드/형식",
+      "type": "text",
+      "default": "질문하고 바로 답하는 형식"
+    },
+    {
+      "key": "duration_sec",
+      "label": "영상 길이(초)",
+      "type": "number",
+      "default": "30"
+    },
+    {
+      "key": "forbidden",
+      "label": "쓰면 안 되는 표현(쉼표 구분)",
+      "type": "text",
+      "default": "최고,100%,완치"
+    },
+    {
+      "key": "ai_video",
+      "label": "AI 영상 방식 포함(Y/N)",
+      "type": "text",
+      "default": "Y"
+    },
+    {
+      "key": "weeks",
+      "label": "업로드 주 수",
+      "type": "number",
+      "default": "4"
+    },
+    {
+      "key": "per_week",
+      "label": "주당 업로드 횟수",
+      "type": "number",
+      "default": "2"
+    },
+    {
+      "key": "start_date",
+      "label": "시작일",
+      "type": "date",
+      "default": "2026-11-16"
+    }
+  ],
+  "uses": [
+    "고객에게 제안할 패키지(월 건수·개월·총액)를 넣어 건당 단가·외주비 뺀 순수익률·고객 1곳당 시간당 수입을 계약 전에 계산한다.",
+    "영상의 '월 4천·순수익 60~70%·13업체·하루 1시간' 주장을 내 숫자로 바꿔 넣어 필요한 고객 수와 하루 작업 시간을 역산한다.",
+    "업종·주제만 넣으면 고객에게 보낼 기획서 뼈대(제목 후보, 시간대별 스토리보드, 촬영 가이드, 캡션)와 금지 표현 점검을 얻는다.",
+    "ChatGPT 요청 문구, AI 시작/끝 이미지 프롬프트, 편집자 전달 체크리스트, 주 N회 업로드 일정을 복사해 바로 쓴다."
+  ],
+  "files": [
+    "agency.py"
+  ]
+}
